@@ -46,11 +46,13 @@ class HomeScreen extends StatelessWidget {
                       subtitle: 'Cerveja Lager Heineken Garrafa 250ml',
                       price: 5.0,
                       rating: 5,
+                      imageUrl: 'https://static.paodeacucar.com/img/uploads/1/48/23834048.jpg',
                     ),
                     MenuCard(
                       title: 'Corona',
                       subtitle: 'Cerveja Pilsen Corona garrafa 330ml',
                       price: 9.0,
+                      imageUrl: 'https://static.paodeacucar.com/img/uploads/1/296/25036296.jpg',
                       rating: 4,
                     ),
                   ],

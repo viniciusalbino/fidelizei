@@ -9,12 +9,14 @@ class MenuCard extends StatelessWidget {
   final String subtitle;
   final int rating;
   final double price;
+  final String imageUrl;
 
   const MenuCard({
     Key? key,
     required this.title,
     required this.subtitle,
     required this.price,
+    required this.imageUrl,
     this.rating = 4,
   }) : super(key: key);
 
@@ -41,17 +43,28 @@ class MenuCard extends StatelessWidget {
         ),
         child: Column(
           children: [
-            // Imagem circular (placeholder cinza)
             Expanded(
               flex: 6,
-              child: Container(
-                margin: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.grey[300],
+              child: ClipRRect(
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(16),
+                  topRight: Radius.circular(16),
+                ),
+                child: Image.network(
+                  imageUrl,
+                  fit: BoxFit.contain,
+                  width: double.infinity,
+                  loadingBuilder: (context, child, loadingProgress) {
+                    if (loadingProgress == null) return child;
+                    return const Center(child: CircularProgressIndicator());
+                  },
+                  errorBuilder: (context, error, stackTrace) {
+                    return const Center(child: Icon(Icons.error));
+                  },
                 ),
               ),
             ),
+
             // Título, subtítulo e estrelas
             Expanded(
               flex: 4,
